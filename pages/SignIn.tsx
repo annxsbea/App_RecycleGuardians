@@ -6,14 +6,18 @@ import ProfileIcon from "../componentes/profileIcon";
 import { Button, Card, TextInput } from "react-native-paper";
 import { cpfMask } from "../Lib";
 import IconSenha from "../componentes/IconSenha";
-import { Link } from "@react-navigation/native";
+import { Link, useNavigation } from "@react-navigation/native";
 
-export default function SignInScreen({  setUserLogged}) {
+export default function SignInScreen({ setUserLogged}) {
+    const navigationHome = useNavigation();
+
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
 
-
+        const goToHome=()=>{ 
+            navigationHome.navigate('Home');
+        }
     // const Logar = async () => {
     //     try {
     //         const response: SignInResponse = await authService.login({ cpf, senha });
@@ -61,8 +65,7 @@ export default function SignInScreen({  setUserLogged}) {
                         />
                         </View>
                     </Card.Content>
-                     <Button mode="contained"  style={{ marginTop: 40, width: 200,height: 60, alignSelf: 'center', backgroundColor: '#35758A',padding: 10 }}>Login</Button>
-                     {/* onPress={Logar} */}
+                     <Button mode="contained" onPress={goToHome} style={{ marginTop: 40, width: 200,height: 60, alignSelf: 'center', backgroundColor: '#35758A',padding: 10 }}>Login</Button>
                      <View style={{ flexDirection: 'row', marginTop: 20, alignSelf: 'center', gap: 5 }}>
                     <Text style={{  color: '#fff'}}>Não tem conta?</Text>
                     <Link to="/SignUp"><Text style={{  color: '#598E8F', fontWeight: 'bold' }}>Cadastre-se</Text></Link>
