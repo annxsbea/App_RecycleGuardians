@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "446927193112",
+    "project_id": "recycleguardians",
+    "storage_bucket": "recycleguardians.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446927193112:android:f8963b4335f28d3bf8af6d",
+        "android_client_info": {
+          "package_name": "com.evolutime.recycleguardians"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpeFlp2Bs9ZJSpbLFJF29UFoj36tq0SoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
