@@ -11,7 +11,6 @@ import { Octicons } from '@expo/vector-icons';
 export default function TabLayout() {
   return (
   
-    
      <Tabs initialRouteName='index' screenOptions={{
       tabBarShowLabel: false,
       tabBarStyle: { backgroundColor: '#001F25', height: 90, borderTopRightRadius: 30, borderTopLeftRadius: 30 },
