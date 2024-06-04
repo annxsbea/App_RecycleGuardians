@@ -1,4 +1,4 @@
-{
+  {
   "expo": {
     "name": "RecycleGuardians",
     "slug": "RecycleGuardians",
@@ -10,15 +10,10 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "googleServicesFile": "./GoogleService-Info.plist",
-      "bundleIdentifier": "com.evolutime.recycleguardians",
-      "buildNumber": "1",
       "supportsTablet": true
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
-      "versionCode": 1,
-      "package": "com.evolutime.recycleguardians",
+      
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       }
@@ -26,20 +21,7 @@
 
     "web": {
       "bundler": "metro"
-    },
-    "plugins": [
-      "expo-router",
-      "@react-native-firebase/app",
-      "@react-native-firebase/auth",
-      "@react-native-firebase/crashlytics",
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "useFrameworks": "static"
-          }
-        }
-      ]
-    ]
+    }
+   
   }
 }

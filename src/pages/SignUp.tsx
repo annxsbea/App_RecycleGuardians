@@ -4,7 +4,7 @@ import LogoPrincipal from "../componentes/LogoPrincipal";
 import ProfileIcon from "../componentes/profileIcon";
 
 import { Button, Card, TextInput } from "react-native-paper";
-import { cpfMask } from "../Lib";
+import { cpfMask } from "../lib";
 import IconSenha from "../componentes/IconSenha";
 import { Link } from "@react-navigation/native";
 

@@ -13,7 +13,7 @@ export default function TabLayout() {
   
      <Tabs initialRouteName='index' screenOptions={{
       tabBarShowLabel: false,
-      tabBarStyle: { backgroundColor: '#001F25', height: 90, borderTopRightRadius: 30, borderTopLeftRadius: 30 },
+      tabBarStyle: { backgroundColor: '#001F25', height: 90},
       lazy: true,
      
   
