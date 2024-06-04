@@ -21,6 +21,7 @@
     "@react-navigation/stack": "^6.3.29",
     "@rneui/themed": "^4.0.0-rc.8",
     "@types/react": "~18.2.79",
+    "axios": "^1.7.2",
     "expo": "~51.0.9",
     "expo-build-properties": "~0.12.1",
     "expo-constants": "~16.0.2",
