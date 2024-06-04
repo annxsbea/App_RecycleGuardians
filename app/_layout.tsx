@@ -12,31 +12,37 @@ export default function TabLayout() {
   return (
   
     
-     <Tabs initialRouteName='index'>
+     <Tabs initialRouteName='index' screenOptions={{
+      tabBarShowLabel: false,
+      tabBarStyle: { backgroundColor: '#001F25', height: 90, borderTopRightRadius: 30, borderTopLeftRadius: 30 },
+      lazy: true,
+     
+  
+      }}>
 
     <Tabs.Screen name="index" 
          options={{
          headerShown: false, 
          title: 'Home',
-         tabBarIcon: (props)=> <AntDesign name="home" {...props} size={24}   />
+         tabBarIcon: (props)=> <AntDesign name="home"  size={32} color={'#fff'}   />
          }}/>
     <Tabs.Screen name="Recycle" options={{
         title: 'Recycle',
         headerShown: false,
-          tabBarIcon: (props)=> <MaterialCommunityIcons name="recycle-variant" {...props} size={24} color={'#2A4949'} />
+          tabBarIcon: (props)=> <MaterialCommunityIcons name="recycle-variant" {...props} size={32} color={'#fff'} />
     }}/>
     <Tabs.Screen name="Coleta"
          options={{
             title: 'Coleta',
             headerShown: false,
-            tabBarIcon: (props)=> <MaterialIcons name="share-location" {...props} size={24} color={'#2A4949'} />
+            tabBarIcon: (props)=> <MaterialIcons name="share-location" {...props} size={32} color={'#fff'} />
 
          }}/>
 
     <Tabs.Screen name="Perfil" options={{
         title: 'Perfil',
         headerShown: false,
-          tabBarIcon: (props)=> <Octicons name="person" {...props} size={24} color={'#2A4949'} />
+          tabBarIcon: (props)=> <Octicons name="person" {...props} size={32} color={'#fff'} />
         }}/>
     </Tabs>
   
