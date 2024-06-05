@@ -8,7 +8,7 @@ export default function Recycle(){
 
 
     return(
-        <ScrollView style={{}}>
+        <ScrollView style={{ backgroundColor: '#ffff'}}>
                 <View style={{ alignContent: 'center', alignItems: 'center', marginTop: 80 }}>
                 <Logo3 />
                 <View/>

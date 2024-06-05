@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import LogoPrincipal from '../componentes/LogoPrincipal';
+import { View, Text,ScrollView } from 'react-native';
+import LogoPrincipal from '../componentes/Logo3';
 import Carrossel from '../componentes/Carrossel/index';
-
+import ImagemHome from '../componentes/imagemHome';
 const Home = () => {
   return (
-    <View style={ {flex: 1, backgroundColor: '#ffff'}}>
+    <ScrollView style={ {flex: 1, backgroundColor: '#ffff'}}>
       <View style={{alignItems: 'center',
         marginTop: 100,
         
@@ -15,7 +15,10 @@ const Home = () => {
       <View style={{marginTop: 50 }}>
         <Carrossel/>
       </View>
-    </View>
+      <View style={{marginTop: 30,alignSelf: 'center' }}>
+        <ImagemHome/>
+      </View>
+    </ScrollView>
   );
 };
 

@@ -8,7 +8,21 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
+import React, { useState } from 'react';
+import { getData } from '../hooks';
+import { UserResponse } from '../@types';
 export default function TabLayout() {
+  const [userLogged, setUserLogged] = React.useState<UserResponse | null>(); 
+  const getUserfromStorage = async() => {
+    const get = await getData()
+    setUserLogged(get)
+  }
+
+
+  React.useEffect(()=>{
+    getUserfromStorage()
+  },[]);
+
   return (
   
      <Tabs initialRouteName='index' screenOptions={{

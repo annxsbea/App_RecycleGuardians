@@ -9,7 +9,7 @@ import Person from "../componentes/Person";
 export default function Perfil(){
     
     return(
-    <ScrollView style={{height: '100%'}}>
+    <ScrollView style={{height: '100%',flex: 1, backgroundColor: '#ffffff'}}>
        
             <View style={{ alignContent: 'center', alignItems: 'center', marginTop: 80 }}>
                 <Logo3 />

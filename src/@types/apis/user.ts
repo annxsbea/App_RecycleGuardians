@@ -1,4 +1,4 @@
-export interface ListClientsResponse  {
+export interface UserResponse  {
     nome_user: string;
     id_user: number;
     email_user: string;
