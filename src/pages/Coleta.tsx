@@ -1,5 +1,5 @@
 import { Image, ScrollView, View, Text } from "react-native"
-import Logo3 from "../componentes/Logo3";
+import Logo3 from "../componentes/imagens/Logo3";
 import pontoC1 from "../assets/pontoC1.png";
 import pontoC2 from "../assets/pontoC2.png";
 import { EvilIcons } from '@expo/vector-icons';

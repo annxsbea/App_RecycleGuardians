@@ -1,6 +1,6 @@
 export type ILoginPayload = {
-    email: string,
-    senha: string,
+    email_user: string,
+    senha_user: string,
   }
   
   export type SignUpFormInterface = {

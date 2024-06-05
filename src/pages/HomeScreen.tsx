@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text,ScrollView } from 'react-native';
-import LogoPrincipal from '../componentes/Logo3';
+import Logo3 from '../componentes/imagens/Logo3';
 import Carrossel from '../componentes/Carrossel/index';
-import ImagemHome from '../componentes/imagemHome';
+import ImagemHome from '../componentes/imagens/ImagemHome';
 const Home = () => {
   return (
     <ScrollView style={ {flex: 1, backgroundColor: '#ffff'}}>
@@ -10,7 +10,7 @@ const Home = () => {
         marginTop: 100,
         
         justifyContent: 'center',}}>
-        <LogoPrincipal />
+        <Logo3 />
       </View>
       <View style={{marginTop: 50 }}>
         <Carrossel/>

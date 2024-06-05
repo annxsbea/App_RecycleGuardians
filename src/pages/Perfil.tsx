@@ -2,12 +2,18 @@ import { Image, ScrollView, View } from "react-native"
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Button, Text } from "react-native-paper";
-import Logo3 from "../componentes/Logo3";
-import Person from "../componentes/Person";
+import Logo3 from "../componentes/imagens/Logo3";
+import Person from "../componentes/imagens/Person";
+import { useNavigation } from "@react-navigation/native";
 
 
-export default function Perfil(){
-    
+export default function Perfil({ route }) {
+    const { setUserLogged } = route.params;
+    const navigation = useNavigation();
+    const handleLogout = () => {
+        setUserLogged(false);
+        navigation.navigate('SignInScreen');
+    }
     return(
     <ScrollView style={{height: '100%',flex: 1, backgroundColor: '#ffffff'}}>
        
@@ -37,7 +43,7 @@ export default function Perfil(){
 
            </View>
        
-           <Button mode="contained"  style={{ backgroundColor: '#35758A', marginTop: 100, borderRadius: 20, width: '50%', alignSelf: 'center' }}> Sair</Button>
+           <Button mode="contained"  style={{ backgroundColor: '#35758A', marginTop: 100, borderRadius: 20, width: '50%', alignSelf: 'center' }} onPress={handleLogout}> Sair</Button>
           
        </View>
    </ScrollView>

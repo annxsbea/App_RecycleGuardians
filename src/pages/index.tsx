@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import LogoPrincipal from "../componentes/LogoPrincipal";
+import LogoPrincipal from "../componentes/imagens/LogoSecundario";
 
 
 export default function Page() {

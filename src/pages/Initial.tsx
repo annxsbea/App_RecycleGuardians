@@ -1,7 +1,7 @@
 import React from "react";
 import {  Button, Text, TouchableOpacity, View } from "react-native";
-import LogoInitial from "../componentes/LogoInitial";
-import ImageInitial from "../componentes/ImagemInitial";
+import LogoInitial from "../componentes/imagens/LogoInitial";
+import ImageInitial from "../componentes/imagens/ImagemInitial";
 import { useNavigation } from '@react-navigation/native';
 
 

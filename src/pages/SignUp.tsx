@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Image, SafeAreaView, Text, View, ScrollView } from "react-native";
-import LogoPrincipal from "../componentes/LogoPrincipal";
-import ProfileIcon from "../componentes/profileIcon";
+import LogoPrincipal from "../componentes/imagens/LogoSecundario";
+import ProfileIcon from "../componentes/imagens/profileIcon";
 
 import { Button, Card, TextInput } from "react-native-paper";
 import { cpfMask } from "../lib";
-import IconSenha from "../componentes/IconSenha";
+import IconSenha from "../componentes/imagens/IconSenha";
 import { Link } from "@react-navigation/native";
 
 export default function SignUp() {

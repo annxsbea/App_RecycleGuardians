@@ -1,6 +1,6 @@
 import { Text } from "react-native-paper";
 import { Image, ScrollView, TextInput, View } from "react-native"
-import Logo3 from "../componentes/Logo3";
+import Logo3 from "../componentes/imagens/Logo3";
 import { useState } from "react";
 import Checkbox from 'expo-checkbox';
 export default function Recycle(){

@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import { Image, SafeAreaView, Text, View } from "react-native";
-import LogoPrincipal from "../componentes/LogoPrincipal";
-import ProfileIcon from "../componentes/profileIcon";
+import LogoPrincipal from "../componentes/imagens/LogoSecundario";
+import ProfileIcon from "../componentes/imagens/profileIcon";
 
 import { Button, Card, TextInput } from "react-native-paper";
 import { cpfMask } from "../lib";
-import IconSenha from "../componentes/IconSenha";
+import IconSenha from "../componentes/imagens/IconSenha";
 import { Link, useNavigation } from "@react-navigation/native";
 
-export default function SignInScreen({ setUserLogged}) {
+
+export default function SignInScreen({route}) {
+    const { setUserLogged } = route.params;
     const navigationHome = useNavigation();
 
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
 
-        const goToHome=()=>{ 
+        const goToHome=()=>{
+            setUserLogged(true);
             navigationHome.navigate('Home');
         }
     // const Logar = async () => {
     //     try {
-    //         const response: SignInResponse = await authService.login({ cpf, senha });
+    //         const response: SignInResponse = await authService.login({ email, senha });
     //         setUserLogged(response);
     //         storeData(response);
     //         showToast('Login realizado com sucesso!');
