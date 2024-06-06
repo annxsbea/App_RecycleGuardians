@@ -1,91 +1,160 @@
 import React, { useState } from "react";
-import { Image, SafeAreaView, Text, View, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView, ToastAndroid } from "react-native";
+import { Button, Card, TextInput } from "react-native-paper";
+import { Link, useNavigation } from "@react-navigation/native";
 import LogoPrincipal from "../componentes/imagens/LogoSecundario";
 import ProfileIcon from "../componentes/imagens/profileIcon";
-
-import { Button, Card, TextInput } from "react-native-paper";
-import { cpfMask } from "../lib";
 import IconSenha from "../componentes/imagens/IconSenha";
-import { Link } from "@react-navigation/native";
+import { authService } from "../services/authService";
+import { HomeScreenProp, SignUpResponse } from "../@types";
 
-export default function SignUp() {
+export default function SignUp({ route }) {
+    const { setUserLogged } = route.params;
+    const [email_user, setEmail_user] = useState('');
+    const [nome_user, setNome_user] = useState('');
+    const [senha_user, setSenha_user] = useState('');
+    const navigation = useNavigation();
+    const navigationHome = useNavigation<HomeScreenProp>();
 
-    const [email, setEmail] = useState('');
-    const [nome, setNome] = useState('');
-    const [cpf, setCpf] = useState('');
+    const showToast = (message) => {
+        ToastAndroid.show(message, ToastAndroid.SHORT);
+    };
 
-    const [senha, setSenha] = useState('');
+    const CadastrarUsuario = async () => {
+        if (!email_user || !nome_user || !senha_user) {
+            showToast('Por favor, preencha todos os campos.');
+            return;
+        }
+        try {
+            const response: SignUpResponse = await authService.register({ email_user, senha_user, nome_user });
+            showToast("Usuário cadastrado com sucesso!");
+            setUserLogged(response);
+            navigationHome.navigate('HomeScreen');
+        } catch (error) {
+            showToast("Erro ao cadastrar usuário. Tente novamente mais tarde.");
+        }
+    };
+
     return (
-        <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <View style={{ backgroundColor: '#fff' }}>
-            <View style={{ alignItems: 'center', marginTop: 100, marginBottom: 30,justifyContent: 'center' }}>
-            <LogoPrincipal/>
+        <ScrollView style={styles.container}>
+            <View style={styles.logoContainer}>
+                <LogoPrincipal />
             </View>
-       </View>
-    
-       <View style={{ flex: 1, backgroundColor: '#001824', borderTopLeftRadius: 82, borderTopRightRadius: 82, padding: 20 }}>
-        
-                <Card style={{  padding: 5,  backgroundColor: '#001824' }}>
-                    <Card.Title title="Criar Conta" titleStyle={{ textAlign: 'center', fontSize:25, fontWeight: 'bold', marginTop: 50, color: 'white' }} />
-                    <Card.Content style={{ marginTop: 30, }}>
-                        <View>
-                         <ProfileIcon/>
-                        <TextInput
-                            label={<Text style={{color: '#607DB7'}}>email</Text>}
-                           
-                            value={email}
-                            onChangeText={ setEmail}
-                            style={{ marginBottom: 10, backgroundColor: '#F2F2F2' , borderRadius: 8, marginTop: 10, padding: 5,paddingLeft: 35,borderTopStartRadius: 18, borderTopEndRadius: 18, borderBottomStartRadius: 18, borderBottomEndRadius: 18}}
-                        />
+            <View style={styles.formContainer}>
+                <Card style={styles.card}>
+                    <Card.Title title="Criar Conta" titleStyle={styles.title} />
+                    <Card.Content>
+                        <View style={styles.inputContainer}>
+                            <ProfileIcon />
+                            <TextInput
+                                label={<Text style={styles.labelText}>Email</Text>}
+                                value={email_user}
+                                onChangeText={setEmail_user}
+                                style={styles.input}
+                            />
                         </View>
-                        <View>
-                         <ProfileIcon/>
-                        <TextInput
-                            label={<Text style={{color: '#607DB7'}}>Nome</Text>}
-                           
-                            value={nome}
-                            onChangeText={ setNome}
-                            style={{ marginBottom: 10, backgroundColor: '#F2F2F2' , borderRadius: 8, marginTop: 10, padding: 5,paddingLeft: 35,borderTopStartRadius: 18, borderTopEndRadius: 18, borderBottomStartRadius: 18, borderBottomEndRadius: 18}}
-                        />
+                        <View style={styles.inputContainer}>
+                            <ProfileIcon />
+                            <TextInput
+                                label={<Text style={styles.labelText}>Nome</Text>}
+                                value={nome_user}
+                                onChangeText={setNome_user}
+                                style={styles.input}
+                            />
                         </View>
-                         <View>
-                         <ProfileIcon/>
-                        <TextInput
-                            label={<Text style={{color: '#607DB7'}}>cpf</Text>}
-                           
-                            value={cpf}
-                            onChangeText={text => setCpf(cpfMask(text))}
-                            style={{ marginBottom: 10, backgroundColor: '#F2F2F2' , borderRadius: 8, marginTop: 10, padding: 5,paddingLeft: 35,borderTopStartRadius: 18, borderTopEndRadius: 18, borderBottomStartRadius: 18, borderBottomEndRadius: 18}}
-                        />
-                        </View>
-                        <View >
-                        <IconSenha/>
-                        <TextInput
-                             label={<Text style={{color: '#607DB7'}}>Password</Text>}
-                            value={senha}
-                            onChangeText={text => setSenha(text)}
-                            secureTextEntry={true}
-                            style={{ marginBottom: 10, backgroundColor: '#F2F2F2' , borderRadius: 8, marginTop: 10, padding: 5,paddingLeft: 30, borderTopStartRadius: 18, borderTopEndRadius: 18, borderBottomStartRadius: 18, borderBottomEndRadius: 18}}
-                        />
+                        <View style={styles.inputContainer}>
+                            <IconSenha />
+                            <TextInput
+                                label={<Text style={styles.labelText}>Password</Text>}
+                                value={senha_user}
+                                onChangeText={text => setSenha_user(text)}
+                                secureTextEntry={true}
+                                style={styles.input}
+                            />
                         </View>
                     </Card.Content>
-                     <Button mode="contained"  style={{ marginTop: 40, width: 200,height: 60, alignSelf: 'center', backgroundColor: '#35758A',padding: 10 }}>Login</Button>
-                     {/* onPress={Logar} */}
-                     <View style={{ flexDirection: 'row', marginTop: 20, alignSelf: 'center', gap: 5 }}>
-                    <Text style={{  color: '#fff'}}>Já tem conta?</Text>
-                    <Link to="/SignIn"><Text style={{  color: '#598E8F', fontWeight: 'bold' }}>Logar</Text></Link>
+                    <Button mode="contained" onPress={CadastrarUsuario} style={styles.button}>Criar Conta</Button>
+                    <View style={styles.linkContainer}>
+                        <Text style={styles.text}>Já tem conta?</Text>
+                        <Link to="/SignIn">
+                            <Text style={styles.linkText}>Logar</Text>
+                        </Link>
                     </View>
-                    
-                    {/* <Button mode="contained" onPress={handleSignUp} style={{ marginTop: 10, width: 150, alignSelf: 'center' }}>Cadastre-se</Button> */} 
                 </Card>
-        
-        
-        
-        </View>
-
-
-
-
-     </ScrollView>
+            </View>
+        </ScrollView>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    logoContainer: {
+        alignItems: 'center',
+        marginTop: 100,
+        marginBottom: 30,
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+    },
+    formContainer: {
+        flex: 1,
+        backgroundColor: '#001824',
+        borderTopLeftRadius: 82,
+        borderTopRightRadius: 82,
+        padding: 25,
+    },
+    card: {
+        padding: 5,
+        backgroundColor: '#001824',
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginTop: 50,
+        color: 'white',
+    },
+    inputContainer: {
+        marginBottom: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    labelText: {
+        color: '#607DB7',
+    },
+    input: {
+        flex: 1,
+        backgroundColor: '#F2F2F2',
+        borderRadius: 8,
+        marginTop: 10,
+        padding: 5,
+        paddingLeft: 35,
+        borderTopStartRadius: 18,
+        borderTopEndRadius: 18,
+        borderBottomStartRadius: 18,
+        borderBottomEndRadius: 18,
+    },
+    button: {
+        marginTop: 70,
+        width: 200,
+        height: 60,
+        alignSelf: 'center',
+        backgroundColor: '#35758A',
+        padding: 10,
+    },
+    linkContainer: {
+        flexDirection: 'row',
+        marginTop: 20,
+        alignSelf: 'center',
+        gap: 5,
+    },
+    text: {
+        color: '#fff',
+    },
+    linkText: {
+        color: '#598E8F',
+        fontWeight: 'bold',
+    },
+});
