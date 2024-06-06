@@ -1,4 +1,4 @@
-<img src="./assets/redmelogo.png" alt="Logo">
+<img src="./src/assets/redemelogo.png" alt="Logo">
 
 
 
