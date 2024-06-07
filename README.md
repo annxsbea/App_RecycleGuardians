@@ -1,7 +1,16 @@
 <img src="./src/assets/redemelogo.png" alt="Logo">
-# Recycle Guardians
-## Plataforma de Reciclagem Sustentável
 
+# Recycle Guardians
+
+## Plataforma de Reciclagem Sustentável
+ Alysson Alves Pinheiro |  2TDSA|  552410  
+ Ana Júlia Almeida         |  2TDSS|  98974   
+ Anna Beatriz Soares     |  2TDSA|  99814   
+ Cauã Couto                    |  2TDSS|  97755   
+ Nicoly Oliveira                 |  2TDSS|  552410  
+------------------------------------------------------
+
+ 
 ## Visão Geral
 
 A Plataforma de Reciclagem Sustentável é uma solução inovadora que visa incentivar e recompensar a reciclagem de resíduos plásticos, especialmente aqueles com alto potencial de poluição marinha. Ao integrar tecnologias como Inteligência Artificial, um aplicativo móvel e parcerias com empresas e comunidades, a plataforma cria um ciclo virtuoso de reciclagem, que não só contribui para a preservação do meio ambiente, mas também engaja e recompensa os usuários por práticas sustentáveis.
