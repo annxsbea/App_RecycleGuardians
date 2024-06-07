@@ -1,7 +1,4 @@
 <img src="./src/assets/redemelogo.png" alt="Logo">
-
-
-
 # Recycle Guardians
 ## Plataforma de Reciclagem Sustentável
 

@@ -1,4 +1,4 @@
-  {
+{
   "expo": {
     "name": "RecycleGuardians",
     "slug": "RecycleGuardians",
@@ -10,18 +10,17 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.RecycleGuardians"
     },
     "android": {
-      
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.RecycleGuardians"
     },
-
     "web": {
       "bundler": "metro"
     }
-   
   }
 }

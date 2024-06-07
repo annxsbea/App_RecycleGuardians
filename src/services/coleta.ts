@@ -18,7 +18,7 @@ class ColetaService extends ApiService {
           },
           {
             id_coleta: 2,
-            endereco_coleta: "Praça Roberto Gomes Pedrosa, 1 - Morumbi, São Paulo - SP, 05653-070",
+            endereco_coleta: "Praça Roberto Gomes Pedrosa, 1 - Morumbi- SP",
             image: pontoC2,
             cep_coleta: "05653-070",
             hr_abertura_coleta: "09:00",

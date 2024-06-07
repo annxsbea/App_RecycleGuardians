@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, ScrollView, ToastAndroid } from "react-native";
 import { Button, Card, TextInput } from "react-native-paper";
 import { Link, useNavigation } from "@react-navigation/native";
-import LogoPrincipal from "../componentes/imagens/LogoSecundario";
-import ProfileIcon from "../componentes/imagens/profileIcon";
-import IconSenha from "../componentes/imagens/IconSenha";
-import { authService } from "../services/authService";
-import { HomeScreenProp, SignUpResponse } from "../@types";
-
+import LogoPrincipal from "../../componentes/imagens/LogoSecundario";
+import ProfileIcon from "../../componentes/imagens/profileIcon";
+import IconSenha from "../../componentes/imagens/IconSenha";
+import { authService } from "../../services/authService";
+import { HomeScreenProp, SignUpResponse } from "../../@types";
+import { styles } from "./styles";
 export default function SignUp({ route }) {
     const { setUserLogged } = route.params;
     const [email_user, setEmail_user] = useState('');
@@ -85,76 +85,3 @@ export default function SignUp({ route }) {
         </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    logoContainer: {
-        alignItems: 'center',
-        marginTop: 100,
-        marginBottom: 30,
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-    },
-    formContainer: {
-        flex: 1,
-        backgroundColor: '#001824',
-        borderTopLeftRadius: 82,
-        borderTopRightRadius: 82,
-        padding: 25,
-    },
-    card: {
-        padding: 5,
-        backgroundColor: '#001824',
-    },
-    title: {
-        textAlign: 'center',
-        fontSize: 25,
-        fontWeight: 'bold',
-        marginTop: 50,
-        color: 'white',
-    },
-    inputContainer: {
-        marginBottom: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    labelText: {
-        color: '#607DB7',
-    },
-    input: {
-        flex: 1,
-        backgroundColor: '#F2F2F2',
-        borderRadius: 8,
-        marginTop: 10,
-        padding: 5,
-        paddingLeft: 35,
-        borderTopStartRadius: 18,
-        borderTopEndRadius: 18,
-        borderBottomStartRadius: 18,
-        borderBottomEndRadius: 18,
-    },
-    button: {
-        marginTop: 70,
-        width: 200,
-        height: 60,
-        alignSelf: 'center',
-        backgroundColor: '#35758A',
-        padding: 10,
-    },
-    linkContainer: {
-        flexDirection: 'row',
-        marginTop: 20,
-        alignSelf: 'center',
-        gap: 5,
-    },
-    text: {
-        color: '#fff',
-    },
-    linkText: {
-        color: '#598E8F',
-        fontWeight: 'bold',
-    },
-});
