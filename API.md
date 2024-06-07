@@ -32,24 +32,27 @@ fetch('http://localhost:8080/user/1](http://localhost:8080/user/login?email=usua
   });
 // Exemplo de Resposta
 const responseExample = {
-  "token": "jwt-token-aqui",
   "user": {
-    "id": 1,
-    "name": "Usuário",
-    "email": "usuario@example.com"
+    "id_user": 1,
+    "nome_user": "Usuário",
+    "email_user": "usuario@example.com"
+   "pontos_user": 2999
+   "senha_user": " An2134"
   }
 };
 
 ```
 ### 2. Registro de Usuário
 
-**Método:** POST
+**Método:** `POST`
 **URL:** `http://localhost:8080/user`
-// Parâmetros:
-//   - email_user (string): Email do usuário.
-//   - senha_user (string): Senha do usuário.
-//   - nome (string): Nome do usuário.
-// Exemplo de Requisição:
+**Parâmetros:**
+- `email` (string): Email do usuário.
+- `senha` (string): Senha do usuário.
+- `nome` (string): Nome do usuário.
+**Exemplo de Requisição:**
+
+```bash
 fetch('http://localhost:8080/user', {
   method: 'POST',
   headers: {
@@ -76,16 +79,18 @@ fetch('http://localhost:8080/user', {
 
 // Exemplo de Resposta:
 const responseExample = {
-  "id": 2,
-  "email": "novo.usuario@example.com",
-  "name": "Novo Usuário"
+  "email_user": "novo.usuario@example.com",
+  "nome_user": "Novo Usuário"
+  "senha_user": "ahzahx"
 };
+```
+### 3. Mostrar Lista de Coleta
 
-// 3. Mostrar Lista de Coleta
+**Método:** `GET`
+**URL:**  http://localhost:8080/coleta
+**Exemplo de Requisição:**
 
-// Método: GET
-// URL: http://localhost:8080/coleta
-// Exemplo de Requisição:
+```bash
 fetch('http://localhost:8080/coleta')
   .then(response => {
     if (!response.ok) {
@@ -103,26 +108,28 @@ fetch('http://localhost:8080/coleta')
 // Exemplo de Resposta:
 const responseExample = [
   {
-    "id": 1,
-    "data": "2024-06-07T00:00:00Z",
-    "local": "Local A"
+
+    "id_coleta": 10;
+    "cep_coleta": "03344035";
+    "endereco_coleta": "Av. Paulista";
+    "hr_abertura_coleta": "10:15";
+    "hr_fechamento_coleta": "18:15";
+    "image": ImageBase64;
   },
-  {
-    "id": 2,
-    "data": "2024-06-08T00:00:00Z",
-    "local": "Local B"
-  }
+  
 ];
+```
+ ### 4. Registrar Resíduo
 
-// 4. Registrar Resíduo
+**Método:** `POST`
+**URL:**  http://localhost:8080/residuos
+**Parâmetros:**
+- `tipo` (string): Tipo do resíduo.
+- `quantidade`(number): Quantidade do resíduo.
+- `data`(string): Data do registro.
+**Exemplo de Requisição:**
 
-// Método: POST
-// URL: http://localhost:8080/residuos
-// Parâmetros:
-//   - tipo (string): Tipo do resíduo.
-//   - quantidade (number): Quantidade do resíduo.
-//   - data (string): Data do registro.
-// Exemplo de Requisição:
+```bash
 fetch('http://localhost:8080/residuos', {
   method: 'POST',
   headers: {
@@ -149,9 +156,11 @@ fetch('http://localhost:8080/residuos', {
 
 // Exemplo de Resposta:
 const responseExample = {
-  "id": 1,
-  "tipo": "Plástico",
-  "quantidade": 5,
-  "data": "2024-06-07T00:00:00Z"
+  "tipo_residuo": "Plástico";
+  "nive_risco": "alto";
+  "id_residuo": 2;
+  "validador": true;
+  "quantidade_residuo": 3;
 };
 
+```
