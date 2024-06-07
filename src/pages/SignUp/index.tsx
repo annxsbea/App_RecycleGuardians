@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, ScrollView, ToastAndroid } from "react-native";
+import { useState } from "react";
+import { View, Text, ScrollView, ToastAndroid } from "react-native";
 import { Button, Card, TextInput } from "react-native-paper";
 import { Link, useNavigation } from "@react-navigation/native";
 import LogoPrincipal from "../../componentes/imagens/LogoSecundario";
@@ -10,21 +10,22 @@ import { HomeScreenProp, SignUpResponse } from "../../@types";
 import { styles } from "./styles";
 export default function SignUp({ route }) {
     const { setUserLogged } = route.params;
+    
     const [email_user, setEmail_user] = useState('');
     const [nome_user, setNome_user] = useState('');
     const [senha_user, setSenha_user] = useState('');
-    const navigation = useNavigation();
+
     const navigationHome = useNavigation<HomeScreenProp>();
 
-    const showToast = (message) => {
+    const showToast = (message: string) => {
         ToastAndroid.show(message, ToastAndroid.SHORT);
     };
 
     const CadastrarUsuario = async () => {
         if (!email_user || !nome_user || !senha_user) {
-            showToast('Por favor, preencha todos os campos.');
-            return;
+            return showToast('Por favor, preencha todos os campos.');
         }
+
         try {
             const response: SignUpResponse = await authService.register({ email_user, senha_user, nome_user });
             showToast("Usuário cadastrado com sucesso!");

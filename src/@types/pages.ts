@@ -1,4 +1,5 @@
 import { StackNavigationProp } from "@react-navigation/stack";
+
 type RootStackParamList = {
     HomeScreen: undefined;
     SignIn: undefined;

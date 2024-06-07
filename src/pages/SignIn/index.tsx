@@ -1,27 +1,28 @@
 import React, { useState } from "react";
-import { Image, SafeAreaView, Text, ToastAndroid, View, StyleSheet } from "react-native";
+import { Text, ToastAndroid, View } from "react-native";
+import { Button, Card, TextInput } from "react-native-paper";
+import { Link, useNavigation } from "@react-navigation/native";
+
 import LogoPrincipal from "../../componentes/imagens/LogoSecundario";
 import ProfileIcon from "../../componentes/imagens/profileIcon";
-
-import { Button, Card, TextInput } from "react-native-paper";
-import { cpfMask } from "../../lib";
 import IconSenha from "../../componentes/imagens/IconSenha";
-import { Link, useNavigation } from "@react-navigation/native";
-import { HomeScreenProp, SignUpScreenProp } from "../../@types";
+
 import { authService } from "../../services/authService";
 import { storeData } from "../../hooks";
-import {styles} from "./styles";
+
+import { styles } from "./styles";
+
+import { HomeScreenProp } from "../../@types";
 
 export default function SignInScreen({ route }) {
     const { setUserLogged } = route.params;
 
     const [email_user, setEmail_user] = useState('');
     const [senha_user, setSenha_user] = useState('');
-    const navigation = useNavigation();
-    const navigationHome = useNavigation<HomeScreenProp>();
-    const navigationSignUp = useNavigation<SignUpScreenProp>();
 
-    const showToast = (message) => {
+    const navigationHome = useNavigation<HomeScreenProp>();
+
+    const showToast = (message: string) => {
         ToastAndroid.show(message, ToastAndroid.SHORT);
     };
 

@@ -1,5 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
+//http://192.168.68.151:8080 mac mobile
+//http://localhost:8080 web
+const BASE_URL = "http://localhost:8080/"
+
 export class ApiService {
     private async request<R>(config: AxiosRequestConfig): Promise<R> {
         try {
@@ -9,11 +13,9 @@ export class ApiService {
             throw error;
         }
     }
-
-    //http://192.168.68.151:8080 mac mobile
-    //http://localhost:8080 web
+    
     async get<R>(endpoint: string): Promise<R> {
-        const url = `http://192.168.68.151:8080/${endpoint}`;
+        const url = `${BASE_URL}${endpoint}`;
         const config: AxiosRequestConfig = {
             method: 'GET',
             url,
@@ -22,7 +24,7 @@ export class ApiService {
     }
 
     async post<R, B>(endpoint: string, body?: B): Promise<R> {
-        const url = `http://192.168.68.151:8080/${endpoint}`;
+        const url = `${BASE_URL}${endpoint}`;
         const config: AxiosRequestConfig = {
             method: 'POST',
             url,
@@ -32,7 +34,7 @@ export class ApiService {
     }
 
     async put<R, B>(endpoint: string, body?: B): Promise<R> {
-        const url = `http://192.168.68.151:8080/${endpoint}`;
+        const url = `${BASE_URL}${endpoint}`;
         const config: AxiosRequestConfig = {
             method: 'PUT',
             url,
@@ -42,7 +44,7 @@ export class ApiService {
     }
 
     async delete<R>(endpoint: string): Promise<R> {
-        const url = `http://192.168.68.151:8080/${endpoint}`;
+        const url = `${BASE_URL}${endpoint}`;
         const config: AxiosRequestConfig = {
             method: 'DELETE',
             url,

@@ -7,7 +7,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { getData } from './src/hooks';
 import { UserResponse } from './src/@types';
 
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -23,17 +22,6 @@ import Recycle from './src/pages/Recycle';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-function MainStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-      <Stack.Screen name="Recycle" component={Recycle} options={{ headerShown: false }} />
-      <Stack.Screen name="Coleta" component={Coleta} options={{ headerShown: false }} />
-      <Stack.Screen name="Perfil" component={Perfil} options={{ headerShown: false }} />
-    </Stack.Navigator>
-  );
-}
 
 export default function App() {
   const [userLogged, setUserLogged] = useState<UserResponse | null>(null);
@@ -52,45 +40,45 @@ export default function App() {
       <NavigationContainer>
         {userLogged ? (
           <Tab.Navigator initialRouteName='Home'
-            screenOptions={{ tabBarShowLabel: false,
-                tabBarStyle: { backgroundColor: '#001F25', height: 90},
-                lazy: true,
-                }}>
-            <Tab.Screen name="Home" component={Home}  options={{
-                        headerShown: false, 
-                        title: 'Home',
-                        tabBarIcon: (props)=> <AntDesign name="home"  size={32} color={'#fff'}   />
-                        }}
-                        initialParams={{ setUserLogged, userLogged }}/>
-            <Tab.Screen name="Recycle" component={Recycle}  options={{
-                title: 'Recycle',
-                headerShown: false,
-                  tabBarIcon: (props)=> <MaterialCommunityIcons name="recycle-variant" {...props} size={32} color={'#fff'} />
-            }}  initialParams={{ setUserLogged, userLogged }}/>
-            <Tab.Screen name="Coleta" component={Coleta}  options={{
-            title: 'Coleta',
-            headerShown: false,
-            tabBarIcon: (props)=> <MaterialIcons name="share-location" {...props} size={32} color={'#fff'} />
-
-            }} initialParams={{ setUserLogged, userLogged }}/>
-            <Tab.Screen name="Perfil" component={Perfil}  options={{
+            screenOptions={{
+              tabBarShowLabel: false,
+              tabBarStyle: { backgroundColor: '#001F25', height: 90 },
+              lazy: true,
+            }}>
+            <Tab.Screen name="Home" component={Home} options={{
+              headerShown: false,
+              title: 'Home',
+              tabBarIcon: () => <AntDesign name="home" size={32} color={'#fff'} />
+            }}
+              initialParams={{ setUserLogged, userLogged }} />
+            <Tab.Screen name="Recycle" component={Recycle} options={{
+              title: 'Recycle',
+              headerShown: false,
+              tabBarIcon: (props) => <MaterialCommunityIcons name="recycle-variant" {...props} size={32} color={'#fff'} />
+            }} initialParams={{ setUserLogged, userLogged }} />
+            <Tab.Screen name="Coleta" component={Coleta} options={{
+              title: 'Coleta',
+              headerShown: false,
+              tabBarIcon: (props) => <MaterialIcons name="share-location" {...props} size={32} color={'#fff'} />
+            }} initialParams={{ setUserLogged, userLogged }} />
+            <Tab.Screen
+              name="Perfil"
+              component={Perfil} options={{
                 title: 'Perfil',
                 headerShown: false,
-                tabBarIcon: (props)=> <Octicons name="person" {...props} size={32} color={'#fff'} />
-                }} 
-                initialParams={{ setUserLogged, userLogged }}/>
-
-
+                tabBarIcon: (props) => <Octicons name="person" {...props} size={32} color={'#fff'} />
+              }}
+              initialParams={{ setUserLogged, userLogged }} />
           </Tab.Navigator>
         ) : (
           <Stack.Navigator>
             <Stack.Screen name="Initial" component={Initial} options={{ headerShown: false }} initialParams={{
-                setUserLogged,
+              setUserLogged,
             }} />
             <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} initialParams={{
-                setUserLogged,
-            }}/>
-            <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} initialParams={ { setUserLogged }} />
+              setUserLogged,
+            }} />
+            <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} initialParams={{ setUserLogged }} />
           </Stack.Navigator>
         )}
       </NavigationContainer>

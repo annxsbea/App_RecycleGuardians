@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import Logo3 from '../../componentes/imagens/Logo3';
 import Carrossel from '../../componentes/Carrossel/index';
 import ImagemHome from '../../componentes/imagens/ImagemHome';
-import {styles} from "./styles";
+import { styles } from "./styles";
 
 const Home = () => {
   return (
@@ -20,7 +20,5 @@ const Home = () => {
     </ScrollView>
   );
 };
-
-
 
 export default Home;

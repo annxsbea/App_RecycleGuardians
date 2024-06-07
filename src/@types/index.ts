@@ -1,2 +1,2 @@
 export * from './apis';
-export * from './pages' 
+export * from './pages';

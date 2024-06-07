@@ -1,22 +1,16 @@
-import React, { useState } from "react";
-import { Image, ScrollView, View ,StyleSheet} from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
 import { Button, Text } from "react-native-paper";
 import Logo3 from "../../componentes/imagens/Logo3";
 import Person from "../../componentes/imagens/Person";
 import { useNavigation } from "@react-navigation/native";
-import { UserResponse } from "../../@types";
 import { SignInScreenProp } from "../../@types";
 
 import { styles } from "./styles";
 
 export default function Perfil({ route }) {
-  const { setUserLogged , userLogged} = route.params;
-    const navigationSignIn = useNavigation<SignInScreenProp>();
-
-  const navigation = useNavigation();
-
-
+  const { setUserLogged, userLogged } = route.params;
+  const navigationSignIn = useNavigation<SignInScreenProp>();
 
   const handleLogout = () => {
     setUserLogged(false);

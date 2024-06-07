@@ -7,5 +7,4 @@ export interface ColetaResponse {
     hr_abertura_coleta: string;
     hr_fechamento_coleta: string;
     image: ImageSourcePropType;
-
 }

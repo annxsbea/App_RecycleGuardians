@@ -1,10 +1,7 @@
 
 import { useState, useEffect, useRef } from "react";
-import {  View, FlatList, Image, Dimensions } from "react-native";
-import Animated, {Layout, FadeInLeft, FadeOutRight}from "react-native-reanimated";
-import Slide1 from "./slide1";
-import Slide2 from "./slide2";
-import Slide3 from "./slide3";
+import { View, FlatList, Image, Dimensions } from "react-native";
+import Animated, { Layout, FadeInLeft, FadeOutRight } from "react-native-reanimated";
 
 const DATA = [
   {
@@ -19,16 +16,16 @@ const DATA = [
 ];
 
 export default function Carrossel() {
- const [activeBanner, setActiveBanner] = useState<number>(0);
- const FlatlistRef = useRef<FlatList>(null);
+  const [activeBanner, setActiveBanner] = useState<number>(0);
+  const FlatlistRef = useRef<FlatList>(null);
 
- const onViewableItemsChanged = ({ viewableItems }: any) => {
+  const onViewableItemsChanged = ({ viewableItems }: any) => {
     if (viewableItems[0] !== undefined) {
       setActiveBanner(viewableItems[0]?.index);
     }
   };
 
- const viewabilityConfigCallbackPairs = useRef([
+  const viewabilityConfigCallbackPairs = useRef([
     {
       viewabilityConfig: {
         itemVisiblePercentThreshold: 80,
@@ -57,42 +54,43 @@ export default function Carrossel() {
     return () => clearTimeout(timeId);
   }, [activeBanner]);
 
-    return (
-        <View style={{ alignItems: 'center' }}>
-        
-       <FlatList
-       ref={FlatlistRef}
-       data={DATA}
-       renderItem={({ item, index }) => (
-            <View
-             style={{
-             width: Dimensions.get('screen').width * 0.8,
-             alignItems: 'center',
-             height: 180,
-             borderRadius: 30,
-             marginHorizontal: 40,}}
-             > 
-             <Image
-                source={item.image}
-                style={{
+  return (
+    <View style={{ alignItems: 'center' }}>
+
+      <FlatList
+        ref={FlatlistRef}
+        data={DATA}
+        renderItem={({ item, index }) => (
+          <View
+            style={{
+              width: Dimensions.get('screen').width * 0.8,
+              alignItems: 'center',
+              height: 180,
+              borderRadius: 30,
+              marginHorizontal: 40,
+            }}
+          >
+            <Image
+              source={item.image}
+              style={{
                 width: '100%',
                 height: '100%',
                 alignSelf: 'center',
                 borderRadius: 30,
-                }}
-                resizeMode='contain'
-           />
-            </View>
+              }}
+              resizeMode='contain'
+            />
+          </View>
 
-        )} 
+        )}
         pagingEnabled
         viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
         horizontal
         keyExtractor={(item, index) => String(index)}
-        showsHorizontalScrollIndicator={false}/>
-
-
-<FlatList
+        showsHorizontalScrollIndicator={false}
+      />
+      
+      <FlatList
         data={DATA}
         renderItem={({ item, index }) => (
           <Animated.View
@@ -117,6 +115,6 @@ export default function Carrossel() {
         horizontal
         keyExtractor={(item, index) => String(index)}
       />
-      </View>
-    );
+    </View>
+  );
 }

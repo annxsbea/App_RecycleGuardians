@@ -3,13 +3,12 @@ export interface ResiduosResponse  {
     nive_risco: string;
     id_residuo: number;
     validador: boolean;
-    quantidade_residuo: number
+    quantidade_residuo: number;
 }
-
 
 export interface ResiduosPayload {
     tipo_residuo: string;
-    imagem_residuos: string
+    imagem_residuos: string;
     validador: string;
-    quantidade_residuo: number
+    quantidade_residuo: number;
 }

@@ -3,12 +3,12 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:'#001824',
+        backgroundColor: '#001824',
     },
     logoContainer: {
         flex: 1,
         alignItems: 'center',
-        position:'absolute',
+        position: 'absolute',
         bottom: 0
     },
     buttonContainer: {

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { View, ScrollView, TextInput, Text, StyleSheet, Button, TouchableOpacity, Image, Linking, ToastAndroid } from "react-native";
+import { useState } from "react";
+import { View, ScrollView, TextInput, Text, TouchableOpacity, Image, ToastAndroid } from "react-native";
 import Logo3 from "../../componentes/imagens/Logo3";
 import Checkbox from 'expo-checkbox';
 import * as ImagePicker from 'expo-image-picker';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { EvilIcons } from '@expo/vector-icons';
 
-import QRCodeScanner from 'react-native-qrcode-scanner';
-import { RNCamera } from 'react-native-camera';
 import { ResiduosResponse } from "../../@types";
 import { residuosService } from "../../services/residuosServices";
 
@@ -15,18 +13,14 @@ import { styles } from "./styles";
 export default function Recycle({ route }) {
     const { setUserLogged } = route.params;
 
-    const [tipo_residuo, setTipo_residuo] = useState('');
     const [quantidade_residuo, setQuantidade_residuo] = useState('');
-    const [imagem_residuos, setImagem_residuos] = useState('');
-    const [validador, setValidador] = useState('');
+    // const [validador, setValidador] = useState('');
     const [material, setMaterial] = useState('');
     const [selectedImage, setSelectedImage] = useState('');
-    const [selectedImageCam, setSelectedImageCam] = useState('');
 
-    const showToast = (message) => {
+    const showToast = (message: string) => {
         ToastAndroid.show(message, ToastAndroid.SHORT);
     };
-
 
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -40,11 +34,9 @@ export default function Recycle({ route }) {
         } else {
             showToast('Nenhuma imagem selecionada.');
         }
-    };
-
+    }
 
     const uploadImageCamara = async () => {
-
         try {
             await ImagePicker.requestCameraPermissionsAsync();
             let result = await ImagePicker.launchCameraAsync({
@@ -56,37 +48,29 @@ export default function Recycle({ route }) {
             })
             if (!result.canceled) {
                 console.log(result)
-                setSelectedImageCam(result.assets[0].base64);
+                setSelectedImage(result.assets[0].base64);
             }
-
         } catch (error) {
             showToast('Erro ao carregar imagem' + error);
-
-
         }
     }
 
     const deleteImage = async () => {
-        try {
-            setSelectedImageCam(null);
-            setSelectedImage(null);
-
-
-        } catch (error) {
-            showToast('Erro ao apagar imagem' + error);
-
-        }
-
+        setSelectedImage(null);
     }
 
-
     const CadastrarReciclagem = async () => {
-        if (!tipo_residuo || !quantidade_residuo || !imagem_residuos || !validador) {
+        if (!material || !quantidade_residuo || !selectedImage) {
             showToast('Por favor, preencha todos os campos.');
             return;
         }
         try {
-            const response: ResiduosResponse = await residuosService.register({ tipo_residuo, quantidade_residuo: +quantidade_residuo, imagem_residuos, validador });
+            const response: ResiduosResponse = await residuosService.register({
+                tipo_residuo: material,
+                quantidade_residuo: +quantidade_residuo,
+                imagem_residuos: selectedImage,
+                validador: ''
+            });
             showToast("Reciclagem cadastrada com sucesso!");
             setUserLogged(response);
         } catch (error) {
@@ -141,7 +125,6 @@ export default function Recycle({ route }) {
                 />
             </View>
 
-
             <View style={styles.fotoContainer}>
                 <Text style={styles.titleFoto}>Anexar fotos dos materiais reciclados </Text>
                 <View style={styles.buttonContainer}>
@@ -152,13 +135,7 @@ export default function Recycle({ route }) {
                         onPress={(pickImageAsync)} style={styles.button} >
                         <MaterialIcons name="attach-file" size={28} color="white" />
                     </TouchableOpacity>
-
-
-
-
                 </View>
-
-
 
                 <View style={styles.imageContainer}>
                     {selectedImage && (
@@ -169,34 +146,19 @@ export default function Recycle({ route }) {
                             </TouchableOpacity>
                         </>
                     )}
-                    {selectedImageCam && (
-                        <>
-                            <Image source={{ uri: selectedImageCam }} style={styles.image} />
-                            <TouchableOpacity onPress={deleteImage} style={styles.buttonTrash}>
-                                <EvilIcons name="trash" size={34} color="black" />
-                            </TouchableOpacity>
-                        </>
-                    )}
                 </View>
-
-
             </View>
             <View style={styles.qrCodeContainerAbsolute}>
                 <Text style={styles.titleQrCode}>Escaneie o QR Code</Text>
                 <TouchableOpacity onPress={(uploadImageCamara)} style={styles.buttonQrCode} >
                     <MaterialIcons name="qr-code-scanner" size={84} color="#2A4949" />
                 </TouchableOpacity>
-                <View>
-
-                </View>
-
             </View>
             <View style={styles.qrCodeContainerBotao}>
                 <TouchableOpacity onPress={CadastrarReciclagem} style={styles.buttonCadastrarReciclagem} >
                     <Text style={styles.textCadastrarReciclagem}>Enviar</Text>
                 </TouchableOpacity>
             </View>
-
         </ScrollView>
     );
 }
