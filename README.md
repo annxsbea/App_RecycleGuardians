@@ -63,7 +63,9 @@ A Plataforma de Reciclagem Sustentável é uma solução inovadora que visa ince
   
 - [Figma](https://www.figma.com/design/aUtkmnBXpjEWZkqXVUkNNX/Global?node-id=0-1&t=sBARk7lewqdqSPN6-1)
  
--[Vídeo Pitch](https://youtu.be/EK7IvoCNhmI?si=svhxPc7uV_Z0gRbl)
+- [Vídeo Pitch](https://youtu.be/EK7IvoCNhmI?si=svhxPc7uV_Z0gRbl)
+
+
 -----------------------------------------------------------------------------------------------------
 
 ## Requisitos
