@@ -79,7 +79,7 @@ Antes de iniciar, certifique-se de ter instalado o seguinte:
 1. **Clone o Repositório**:
 
 ```bash
-git clone https://github.com/leonardo-bragatti/2024-2tdsa-o20-global-solution-recycle-guardians.git
+git clone https://github.com/AnnaBsoares/App_RecycleGuardians.git
 ```
 2.Instale as Dependências:
 ```
