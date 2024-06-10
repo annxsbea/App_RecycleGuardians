@@ -3,12 +3,7 @@
 # Recycle Guardians
 
 ## Plataforma de Reciclagem Sustentável
- Alysson Alves Pinheiro |  2TDSA|  552410  
- Ana Júlia Almeida         |  2TDSS|  98974   
- Anna Beatriz Soares     |  2TDSA|  99814   
- Cauã Couto                    |  2TDSS|  97755   
- Nicoly Oliveira                 |  2TDSS|  552410  
-------------------------------------------------------
+
 
  
 ## Visão Geral
